@@ -1,3 +1,5 @@
+Henriette Friis
+
 TODO: Add more to the title of your project here
 
 # LearningR:
