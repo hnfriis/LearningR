@@ -2,6 +2,8 @@ Henriette Friis
 
 Random sentence
 
+New random sentence
+
 TODO: Add more to the title of your project here
 
 # LearningR:
