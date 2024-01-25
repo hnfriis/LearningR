@@ -269,6 +269,7 @@ nhanes_small %>%
 ```{r}
 #| layout-ncol: 2
 
+
 # Barplot to work from, with two discrete variables
 nhanes_small %>%
   filter(!is.na(diabetes), !is.na(education)) %>%
@@ -305,3 +306,57 @@ nhanes_small %>%
   geom_point(na.rm = TRUE) +
   scale_colour_viridis_c(option = "inferno")
 ```
+
+## Themes
+
+```{r}
+base_scatterplot <- nhanes_small %>%
+  filter(!is.na(diabetes), !is.na(education)) %>%
+  ggplot(aes(
+    x = bmi,
+    y = bp_sys_ave,
+    colour = age
+  )) +
+  geom_point(na.rm = TRUE) +
+  facet_grid(
+    rows = vars(diabetes),
+    cols = vars(education)) + 
+    scale_colour_viridis_c()
+
+base_scatterplot
+
+
+```
+
+### Theme 1
+
+```{r}
+base_scatterplot + theme_bw()
+```
+### Theme 2
+
+```{r}
+base_scatterplot + theme_minimal()
+```
+### Theme 3
+
+```{r}
+base_scatterplot + theme_classic()
+```
+
+### Theme set 
+
+```{r}
+theme_set(theme_minimal())
+#If you put the theme_set in the top of all your plots, all subsequent will have this theme. 
+
+base_scatterplot
+```
+## Labeling the axes
+```{r}
+base_scatterplot + 
+    labs(title = "BMI, systolic blood pressure and age by diabetes and education status", 
+         x = "BMI", 
+         y = "Systolic blood pressure") 
+```
+
