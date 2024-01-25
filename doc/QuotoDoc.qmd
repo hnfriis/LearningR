@@ -262,13 +262,19 @@ nhanes_small %>%
   geom_point(na.rm = TRUE) +
   facet_grid(
     rows = vars(diabetes),
-    cols = vars(education)
-  )
+    cols = vars(education))
 ```
 
 ## Exercise for changing colours
 ```{r}
+#| layout-ncol: 2
+
 # Barplot to work from, with two discrete variables
+nhanes_small %>%
+  filter(!is.na(diabetes), !is.na(education)) %>%
+  ggplot(aes(x = diabetes, fill = education)) +
+  geom_bar(position = position_dodge()) 
+
 nhanes_small %>%
   filter(!is.na(diabetes), !is.na(education)) %>%
   ggplot(aes(x = diabetes, fill = education)) +
